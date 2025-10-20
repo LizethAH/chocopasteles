@@ -1,0 +1,105 @@
+/* Estilos para panel admin: toolbar, tablas, acciones y responsive */
+.admin-panel {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 18px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Toolbar superior */
+.admin-toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+.admin-toolbar .left,
+.admin-toolbar .right { display:flex; gap:10px; align-items:center; }
+.admin-toolbar .title { font-size:1.15rem; font-weight:700; color:#5D4037; }
+
+/* Botones */
+.btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid transparent;
+    background:#5D4037;
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer;
+    font-weight:600;
+    transition:all .15s ease;
+}
+.btn.secondary { background:#f3f3f3; color:#333; border-color:#ddd; }
+.btn.ghost { background:transparent; color:#5D4037; border:1px solid #e0d7d3; }
+.btn:hover { transform:translateY(-2px); opacity:0.95; }
+
+/* Búsqueda / filtros */
+.admin-search {
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.admin-search input[type="search"]{
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    min-width:220px;
+}
+
+/* Tabla */
+.admin-table {
+    width:100%;
+    border-collapse:collapse;
+    background:transparent;
+    overflow:hidden;
+    border-radius:8px;
+}
+.admin-table thead {
+    background: linear-gradient(90deg, #6d4c41, #5D4037);
+    color:#fff;
+    font-weight:700;
+}
+.admin-table th, .admin-table td {
+    padding:12px 14px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+    vertical-align:middle;
+    font-size:0.95rem;
+}
+.admin-table tbody tr:hover { background:#faf7f6; }
+.admin-table img.thumb { width:56px; height:56px; object-fit:cover; border-radius:6px; }
+
+/* Acciones */
+.actions { display:flex; gap:8px; }
+.actions a, .actions button { font-size:0.9rem; padding:6px 8px; border-radius:6px; border:none; cursor:pointer; }
+.actions .edit { background:#fff3e0; color:#5D4037; border:1px solid #e6cfc0; }
+.actions .delete { background:#ffebee; color:#c62828; border:1px solid #f4c6c6; }
+
+/* Badges y estado */
+.badge { display:inline-block; padding:4px 8px; border-radius:999px; font-size:0.85rem; background:#e0e0e0; color:#333; }
+.badge.active { background:#dcedc8; color:#33691e; }
+.badge.inactive { background:#ffccbc; color:#bf360c; }
+
+/* Paginación simple */
+.pagination { display:flex; gap:6px; margin-top:14px; justify-content:flex-end; align-items:center; }
+.pagination a { padding:6px 10px; border-radius:6px; border:1px solid #ddd; background:#fff; color:#333; text-decoration:none; }
+
+/* Responsive */
+@media (max-width:900px){
+    .admin-table th:nth-child(3), .admin-table td:nth-child(3) { display:none; } /* oculta columna auxiliar */
+    .admin-toolbar .title { flex:1 0 100%; }
+}
+@media (max-width:520px){
+    .admin-toolbar { gap:8px; }
+    .admin-toolbar .left { flex:1 0 100%; justify-content:space-between; }
+    .admin-search input[type="search"]{ min-width:120px; }
+}
