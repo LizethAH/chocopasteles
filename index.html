@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Escolar Digital - Colegio Buena Fe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-trophy"></i>
+                <span>Liga Escolar Digital</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#partidos">Partidos</a></li>
+                <li><a href="#equipos">Equipos</a></li>
+                <li><a href="#estadisticas">Estadísticas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Portada Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">Colegio Buena Fe</h1>
+            <h2 class="hero-subtitle animate-fade-in-delay">Liga Escolar Digital 2025</h2>
+            <p class="hero-description">Fomentando el deporte, la competencia sana y el trabajo en equipo</p>
+            <div class="hero-buttons">
+                <a href="#partidos" class="btn btn-primary">
+                    <i class="fas fa-calendar-alt"></i> Ver Partidos
+                </a>
+                <a href="#equipos" class="btn btn-secondary">
+                    <i class="fas fa-users"></i> Arreglar Equipos
+                </a>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <i class="fas fa-futbol"></i>
+        </div>
+    </section>
+
+    <!-- Información de la Liga -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Temporada Activa</h3>
+                    <p>Marzo - Noviembre 2025</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>12 Equipos</h3>
+                    <p>Participando este año</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>Fair Play</h3>
+                    <p>Deporte y valores</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Campeonato</h3>
+                    <p>Final en Noviembre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Partidos -->
+    <section id="partidos" class="partidos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Próximos Partidos</h2>
+                <p>Consulta el calendario de encuentros de la liga escolar</p>
+            </div>
+            <div class="partidos-grid" id="partidosContainer">
+                <!-- Los partidos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Arreglar Equipos -->
+    <section id="equipos" class="equipos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Organizar Equipos</h2>
+                <p>Crea y gestiona los equipos de la liga</p>
+            </div>
+            
+            <div class="equipo-form-card">
+                <h3><i class="fas fa-plus-circle"></i> Crear Nuevo Equipo</h3>
+                <form id="equipoForm">
+                    <div class="form-group">
+                        <label for="nombreEquipo">Nombre del Equipo *</label>
+                        <input type="text" id="nombreEquipo" placeholder="Ej: Los Tigres" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras y espacios" minlength="3" maxlength="30">
+                        <small class="form-hint">Solo letras (mínimo 3 caracteres)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoriaEquipo">Categoría *</label>
+                        <select id="categoriaEquipo" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Sub-13">Sub-13</option>
+                            <option value="Sub-15">Sub-15</option>
+                            <option value="Sub-17">Sub-17</option>
+                        </select>
+                        <small class="form-hint">Selecciona la categoría del equipo</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="capitan">Capitán del Equipo *</label>
+                        <input type="text" id="capitan" placeholder="Nombre completo del capitán" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras y espacios" minlength="5" maxlength="50">
+                        <small class="form-hint">Solo letras (mínimo 5 caracteres)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="colorEquipo">Color del Uniforme</label>
+                        <input type="color" id="colorEquipo" value="#1e40af">
+                        <small class="form-hint">Selecciona el color principal</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-save"></i> Guardar Equipo
+                    </button>
+                </form>
+            </div>
+
+            <div class="equipos-lista">
+                <h3><i class="fas fa-list"></i> Equipos Registrados</h3>
+                <div id="equiposContainer" class="equipos-grid">
+                    <!-- Los equipos se cargarán dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section id="estadisticas" class="estadisticas-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Estadísticas de la Liga</h2>
+                <p>Tabla de posiciones actualizada</p>
+            </div>
+            <div class="tabla-container">
+                <table class="tabla-posiciones">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Equipo</th>
+                            <th>PJ</th>
+                            <th>PG</th>
+                            <th>PE</th>
+                            <th>PP</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaPosiciones">
+                        <!-- Se carga dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto</h2>
+                <p>¿Tienes preguntas? Contáctanos por WhatsApp</p>
+            </div>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <i class="fas fa-school"></i>
+                    <h3>Colegio Buena Fe</h3>
+                    <p>Dirección: Av. Principal #123, Ciudad</p>
+                    <p>Email: ligaescolar@buenafe.edu</p>
+                    <p>Teléfono: +591 73699970</p>
+                </div>
+                <a href="https://wa.me/591123456789?text=Hola,%20tengo%20una%20consulta%20sobre%20la%20Liga%20Escolar%20Digital" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Contáctanos por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/591123456789?text=Hola,%20tengo%20una%20consulta%20sobre%20la%20Liga%20Escolar%20Digital" 
+       class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Liga Escolar Digital</h3>
+                    <p>Colegio Buena Fe - Formando campeones dentro y fuera de la cancha</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Equipo de Desarrollo</h3>
+                    <div class="team-members">
+                        <div class="team-member">
+                            <i class="fas fa-user-tie"></i>
+                            <div>
+                                <strong>Lizeth Ayca</strong>
+                                <span>Product Owner</span>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <i class="fas fa-tasks"></i>
+                            <div>
+                                <strong>Fabiana Flores</strong>
+                                <span>Scrum Master</span>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <strong>Juan Daniel</strong>
+                                <span>Desarrollador</span>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <i class="fas fa-laptop-code"></i>
+                            <div>
+                                <strong>Deysi Cunurana</strong>
+                                <span>Desarrollador</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Colegio Buena Fe - Liga Escolar Digital. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
